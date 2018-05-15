@@ -1,0 +1,575 @@
+@import "vars"
+
+@media only screen and (max-width : 1200px)
+	.circle
+		&--base
+			right: 0
+
+		&--left
+			display: none
+
+	.section
+
+		h2
+			br
+				display: none
+
+		p
+			br
+				display: none
+
+	.partners
+		img
+			width: 90%
+
+	.party
+		&__container
+			width: 100%
+
+		&__block
+			width: 45%
+			margin-left: 0
+			margin-right: 5%
+			span
+				right: 0
+
+	.price
+		padding-top: 80px
+		padding-bottom: 20px
+		h4
+			font-size: 28px
+
+		&__manager
+			right: 0
+
+		&__box
+			width: 80%
+			padding: 15px
+
+			h3
+				margin-right: 10px
+
+			img
+				margin-left: -35px
+				margin-right: 20px
+
+@media only screen and (max-width : 991px)
+	.circle
+		display: none
+
+	.section
+		padding-bottom: 50px
+		padding-top: 50px
+
+		h2
+			font-size: 30px
+			line-height: 1.4
+			&::after
+				margin: 20px auto
+ 
+
+	.header
+		padding-top: 150px
+		padding-bottom: 130px
+
+		&__list
+			margin-left: 0
+			a
+				margin-right: 30px
+		
+		&__title
+			font-size: 35px
+			line-height: 1.4
+
+		&__center-block
+			p
+				margin-bottom: 20px
+				br
+					display: none
+
+	.table
+		h2
+			font-size: 30px
+
+		p
+			br
+				display: none
+
+	.partners
+		&__btn
+			margin-top: 30px
+	
+	.conditions
+		&__img
+			height: 100%
+			top: 0
+
+		&__box
+			p
+				margin-bottom: 0
+
+	.party
+		h2
+			br
+				display: none
+
+		h3
+			padding-right: 30%
+			font-size: 14px
+			br
+				display: none
+		p
+			margin-bottom: 0
+
+		&__block
+			width: 100%
+			margin-right: 0
+
+			span
+				font-size: 40px
+
+	.application
+		padding: 0 0 50px 0
+		h2
+			text-align: center
+			&::after
+				margin-left: auto
+				margin-right: auto
+
+		p
+			text-align: center
+			padding-bottom: 0
+
+		&__content
+			p
+				margin-bottom: 0
+
+		.form
+			position: relative
+			width: 100%
+			top: 0
+
+	.price
+		&__box
+			display: flex
+			flex-direction: row
+			width: 100%
+
+		&__container
+			flex-wrap: wrap
+
+		&__block
+			width: 48%
+			margin-bottom: 30px
+
+			&:last-child
+				margin-bottom: 30px
+
+			&_list
+				padding: 15px
+				li
+					margin-bottom: 10px
+
+	.calculator
+		padding-bottom: 50px
+		padding-top: 0
+		&__container
+			p
+				margin-bottom: 30px
+
+			label
+				margin-bottom: 0
+
+		&__box
+			width: 90%
+
+		&__block_input
+			width: 60%
+
+	.header__page
+		padding-top: 92px
+		padding-bottom: 0
+
+	.main__fag
+		padding-bottom: 50px
+		padding-top: 50px
+
+		h1
+			margin-bottom: 30px
+
+		h2
+			line-height: 1.4
+
+		p
+			margin-top: 10px
+
+		.button
+			top: 15px
+
+		&_block
+			margin-bottom: 20px
+			padding: 15px 70px 15px 15px
+			&:last-child
+				margin-bottom: 0
+
+	.company
+		h1
+			margin-bottom: 30px
+
+		h3
+			&::after
+				margin: 15px 0
+
+		&__box
+			padding: 15px
+			width: 93%
+			margin-left: 7%
+
+			&::before
+				height: 15px
+
+			&::after
+				height: 15px
+
+			img
+				margin-top: 10px
+
+
+
+@media only screen and (max-width : 776px)
+	.header
+		padding-top: 120px
+		.hamburger
+		  display: block
+		  z-index: 1001
+		  right: 0
+		  top: 15px
+
+    .hamburger-box
+      right: 0
+
+		.is-active
+			right: 15px
+			top: 25px
+			.hamburger-inner,
+			.hamburger-inner:after,
+			.hamburger-inner:before
+				background-color: #000
+
+		&__top
+			padding-top: 10px
+			padding-bottom: 10px
+
+		&__nav
+			padding-left: 20px
+			width: 270px
+			flex-direction: column
+			position: fixed
+			right: -270px
+			top: 0
+			z-index: 1000
+			height: 100vh
+			background-color: #fff
+			transition: all .3s
+
+		&__nav-active
+			right: 0px
+
+		&__list
+			flex-direction: column
+			padding-top: 60px
+			a
+				padding: 5px 0
+				color: #000
+				margin-right: 0
+				&:hover
+					color: #000
+				&:focus
+					color: #000
+
+		&__call
+			margin-right: 50px
+
+	.delet
+		display: none
+
+	.conditions
+		h2
+			text-align: center
+			&::before
+				left: 50%
+				transform: translate(-50%, 0)
+
+		p
+			text-align: center
+			margin-bottom: 40px
+
+		&__box
+			border-left: 7px solid rgba(#ff9f5c, .35)
+			border-top: none
+			width: 100%
+			left: 0
+			right: auto
+			padding: 25px
+
+			&::before
+				content: ''
+				position: absolute
+				top: 0px
+				right: 0
+				left: auto
+				width: 30px
+				height: 7px
+				background-color: rgba(#ff9f5c, .35)
+
+			&::after
+				content: ''
+				position: absolute
+				top: 0px
+				left: 0
+				width: 30px
+				height: 7px
+				background-color: rgba(#ff9f5c, .35)
+
+			p
+				text-align: left
+				margin-bottom: 0
+
+			span
+				display: block
+				margin-top: -40px
+				margin-left: 50%
+				transform: translate(-50%, 0)
+
+	.calculator
+		input
+			width: 60%
+		&__box
+			width: 100%
+			p
+				span
+					font-size: 24px
+	
+	.price
+		&__block
+			&_bottom
+				padding-top: 20px
+				padding-bottom: 20px
+	.footer
+		&__call
+			margin-right: 0
+
+		&__soc
+			margin-top: 15px
+
+	.main__fag
+		&_block
+			&:last-child
+				margin-bottom: 20px
+
+	.header__page
+		padding-top: 72px
+
+@media only screen and (max-width : 576px)
+	.section
+		padding-top: 30px
+		padding-bottom: 30px
+
+		h2
+			font-size: 24px
+			&::after
+				margin-bottom: 15px
+				margin-top: 15px
+	
+	.header
+		.hamburger
+			top: 12px
+
+		.is-active
+			top: 20px
+
+		&__title
+			font-size: 28px
+
+		&__block
+		  font-size: 14px
+		  line-height: 17px
+
+		&__logo
+			height: 35px
+			width: 35px
+
+	.table
+		h2
+			font-size: 24px
+
+	.partners
+		&__container
+			flex-wrap: wrap
+
+		&__block
+			width: 48%
+			margin-bottom: 10px
+
+	.conditions
+		p
+			margin-bottom: 40px
+		&__box
+			p
+				margin-bottom: 0
+
+	.party
+		img
+			width: 45px
+			height: 45px
+
+		&__block
+			padding-left: 60px
+			margin-bottom: 40px
+
+		p
+			margin-bottom: 0
+
+	.application
+		padding: 0 0 30px 0
+		&__content
+			p
+				margin-bottom: 0
+		.form
+			padding: 30px
+
+			&__btn
+				margin-top: 10px
+
+	.price
+		&__box
+			border-left: 7px solid rgba(#ff9f5c, .35)
+
+			&::after
+				display: none
+			&::before
+				display: none
+
+			h3
+				font-size: 16px
+
+			img
+				display: none
+
+		&__block
+			width: 100%
+
+			&_bottom
+				padding-top: 20px
+				padding-bottom: 20px
+
+		&__manager
+			bottom: -20px
+			left: 50%
+			right: auto
+			transform: translate(-50%, 0)
+			width: 70%
+			br
+				display: none
+	
+	.calculator
+		padding-bottom: 30px
+		padding-top: 0
+
+		&__box
+			flex-wrap: wrap
+			justify-content: space-around
+			p
+				font-size: 14px
+				margin: 0 10px 10px 10px
+				text-align: center
+				span
+					font-size: 18px
+
+		&__block
+			&_input
+				width: 80%
+
+	.footer
+		&__container
+			padding-top: 30px
+			padding-bottom: 30px
+
+		&__copy
+			padding-top: 15px
+			padding-bottom: 15px
+
+	.main__fag
+		padding-top: 30px
+		padding-bottom: 30px
+
+	.company
+		padding-top: 30px
+
+		&__box
+			border-left: 7px solid rgba(#ff9f5c, .35)
+			width: 100%
+			margin-left: 0
+			flex-direction: column
+			text-align: center
+
+			h4
+				margin: 0 0 10px 0
+				br
+					display: none
+
+			p
+				text-align: center
+				border-left: none
+				padding: 0
+
+			&::before
+				display: none
+
+			&::after
+				display: none
+
+			img
+				display: none
+
+@media only screen and (max-width : 480px)
+	.section
+		h2
+			font-size: 20px
+
+	.header
+		padding-top: 100px
+		&__title
+			font-size: 22px
+			margin-bottom: 20px
+
+	.table
+		h2
+			margin-bottom: 15px
+
+	.price
+		&__box
+			flex-direction: column
+
+			h3
+				text-align: center
+				margin: 0 0 10px 0
+				padding: 0
+				br
+					display: none
+
+			p
+				text-align: center
+				border-left: none
+				margin: 0
+				padding: 0
+				br
+					display: none
+
+	.header__page
+		padding-top: 72px
+
+	.company
+		img
+			width: 100%
+

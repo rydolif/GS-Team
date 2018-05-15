@@ -1,0 +1,1348 @@
+@import "vars"
+@import "fonts"
+@import "libs"
+
+::placeholder
+	color: #666
+
+::selection
+	background-color: $accent
+	color: #fff
+
+html, body
+	height: 100%
+
+body
+	font-size: 16px
+	min-width: 320px
+	position: relative
+	line-height: 1.65
+	font-family: $font
+	overflow-x: hidden
+	input, textarea
+		border: #666 1px solid
+		outline: none
+		&:focus:required:invalid
+			border-color: red
+		&:required:valid
+			border-color: green
+
+b, strong
+	font-weight: bold
+
+h1, h2, h3, h4
+	line-height: 1.4
+	margin: 0
+	padding: 0
+
+p
+	margin: 0
+	padding: 0
+a,
+a:focus,
+a:hover
+	outline: none
+
+input
+	box-shadow: none
+	-webkit-appearance: none
+	border: none
+	&:hover
+		box-shadow: none
+		-webkit-appearance: none
+	&:focus
+		outline: none
+		box-shadow: none
+		-webkit-appearance: none
+
+textarea
+	resize: none
+	outline: none
+	box-shadow: none
+	-webkit-appearance: none
+	border: none
+	&:hover
+		box-shadow: none
+		outline: none
+		-webkit-appearance: none
+	&:focus
+		outline: none
+		box-shadow: none
+		-webkit-appearance: none
+
+body input:focus:required:invalid, body textarea:focus:required:invalid
+	border: none
+	border-bottom: 1px solid #cccccc
+
+body input:required:valid, body textarea:required:valid
+	border: none
+	border-bottom: 1px solid #cccccc
+
+
+.preloader
+	position: fixed
+	top: 0
+	left: 0
+	right: 0
+	bottom: 0
+	z-index: 9999
+	background-color: #fff
+
+.pulse
+	position: relative
+	left: 50%
+	top: 50vh
+	margin: -40px 0 0 -40px
+
+.pulse::before, .pulse::after
+	content: ''
+	border: 5px solid #ff9f5c
+	height: 80px
+	width: 80px
+	border-radius: 50%
+	position: absolute
+
+.pulse::before
+	animation: pulse-outer .8s ease-in infinite
+
+.pulse::after
+	animation: pulse-inner .8s ease-in infinite
+
+
+@keyframes pulse-outer
+		0%
+			opacity: .1
+		
+		50%
+			opacity: .5
+		
+		100%
+			opacity: 0
+
+
+@keyframes pulse-inner
+		0%
+			opacity: 1
+			transform: scale(0)
+		
+		100%
+			opacity: 0
+			transform: scale(1)
+		
+.call__back
+	border: none
+	padding: 0
+	margin: 0
+	background-color: transparent
+	color: #fff
+	font-size: 12px
+	text-align: right
+	outline: none
+	position: relative
+	overflow: hidden
+
+	&::before
+		content: ''
+		width: 100%
+		height: 1px
+		transform: scale(1)
+		transition: all .3s
+		background-color: #fff
+		position: absolute
+		bottom: 0
+
+	&:hover
+		text-decoration: none
+		cursor: pointer
+		outline: none
+		border: none
+		&::before
+			transform: scale(0)
+
+	&:focus
+		text-decoration: none
+		cursor: pointer
+		outline: none
+		border: none
+		&::before
+			transform: scale(0)
+
+.hamburger-inner,
+.hamburger-inner:after,
+.hamburger-inner:before
+	background-color: $accent
+
+.btn
+	display: block
+	border: none
+	outline: none
+	box-shadow: 0 8px 10px rgba(251, 131, 85, 0.4)
+	border-radius: 25px
+	background-color: #ebebeb
+	background: linear-gradient(to right, #f5574b 0%, #ffa05c 100%)
+	font-size: 12px
+	font-weight: 600
+	letter-spacing: 1.2px
+	text-align: center
+	text-transform: uppercase
+	line-height: 1
+	color: #fff
+	padding: 20px 0
+	text-shadow: 0 1px 2px rgba(0, 0, 0, 0.25)
+	margin: 0 auto
+	width: 200px
+
+	&:hover
+		outline: none
+		border: none
+		color: #fff
+		text-decoration: none
+		cursor: pointer
+		background-image: linear-gradient(to right, #f5574b 0%, #ffa05c 70%)
+
+	&:focus
+		outline: none
+		border: none
+		color: #fff
+		text-decoration: none
+		cursor: pointer
+		background-image: linear-gradient(to right, #f5574b 100%, #ffa05c 100%)
+
+
+	
+	&--no-active
+		border-radius: 25px
+		border: 1px solid #f5574b
+		background: transparent
+		color: #f55e53
+		&:hover
+			padding: 21px 41px
+		&:focus
+			padding: 21px 41px
+
+.form
+	background-color: #ffffff
+	box-shadow: 0 20px 30px rgba(0, 0, 0, 0.06)
+	display: block
+	width: 95%
+	text-align: center
+	padding: 50px
+	position: absolute
+	top: -70px
+
+	h3
+		color: #212121
+		font-size: 24px
+		font-weight: 400
+		line-height: 21px
+		&::after
+			content: ''
+			display: block
+			margin: 15px auto 5px auto
+			box-shadow: 0 8px 10px rgba(251, 131, 85, 0.15)
+			background-color: #ffff00
+			background: linear-gradient(to right, #f5574b 0%, #ffa05c 100%)
+			width: 70px
+			height: 1px
+
+	p
+		color: #808080
+		font-size: 12px
+		font-weight: 400
+		line-height: 21px
+		margin-bottom: 25px
+
+	input
+		background-color: #fff
+		background-image: url()
+		border: none
+		border-bottom: 1px solid #cccccc
+		color: #212121
+		font-size: 14px
+		font-weight: 400
+		line-height: 1
+		padding: 10px 20px
+		width: 100%
+		padding-left: 35px
+
+	&__text
+		font-size: 12px
+		color: #b2b2b2
+		font-size: 12px
+		font-weight: 300
+		line-height: 21px
+		text-align: left
+		margin-bottom: 35px
+
+	&__group
+		margin: 0 auto 15px auto
+
+	&__btn
+		margin-top: 25px
+
+	input[name="phone"]
+		background-image: url(../img/phone.svg)
+		background-repeat: no-repeat
+		background-size: 16px 16px
+		background-position: left
+
+	input[name="mail"]
+		background-image: url(../img/email.svg)
+		background-repeat: no-repeat
+		background-size: 16px 16px
+		background-position: left
+
+	label.error
+		font-size: 14px
+		color: red
+		margin-bottom: 0
+	
+	textarea
+		height: 90px
+
+	.hamburger
+		padding: 0
+
+	.is-active
+		right: 10px
+		top: 10px
+		position: absolute
+		.hamburger-inner,
+		.hamburger-inner:after,
+		.hamburger-inner:before
+			background-color: #000
+			height: 2px
+
+		&:focus
+			outline: none
+
+	.hamburger-box
+		width: 24px
+		height: 24px
+
+.circle
+	z-index: -1
+	position: absolute
+	border-radius: 50%
+	border: 50px solid #f7f7f7
+	box-shadow: 0 20px 40px rgba(51, 56, 102, 0.14)
+
+	&--base
+		width: 420px
+		height: 420px
+		right: 10%
+		top: -50%
+
+	&--opacity
+		width: 640px
+		height: 640px
+		background-color: #cccccc
+		opacity: 0.1
+		left: 50%
+		top: -70%
+		transform: translate(-50%, 0)
+		border: none
+		box-shadow: none
+
+	&--min
+		width: 325px
+		height: 325px
+		left: 0%
+		top: 60%
+
+	&--right
+		width: 365px
+		height: 365px
+		right: -10%
+		top: -20%
+
+	&--left
+		width: 300px
+		height: 300px
+		top: -50%
+		left: -7%
+		z-index: 1
+		box-shadow: 0 20px 40px rgba(51, 56, 102, 0.7)
+
+	&--price
+		width: 415px
+		height: 415px
+		border: 70px solid #fafafa
+		left: 10%
+		top: 40%
+
+	&--last
+		width: 235px
+		height: 235px
+		right: 15%
+		top: 50%
+
+	&--about-left
+		box-shadow: 0 20px 40px rgba(51, 56, 102, 0.14)
+		border: 50px solid #f7f7f7
+		width: 290px
+		height: 290px
+		bottom: -20%
+		left: 0
+		z-index: 1
+
+.section
+	h2
+		color: #212121
+		font-size: 32px
+		font-weight: 400
+		line-height: 28px
+		text-align: center
+		position: relative
+
+		&::after
+			content: ''
+			display: block
+			margin: 25px auto
+			box-shadow: 0 8px 10px rgba(251, 131, 85, 0.15)
+			background-color: #ffff00
+			background: linear-gradient(to right, #f5574b 0%, #ffa05c 100%)
+			width: 70px
+			height: 1px
+
+	p
+		color: #4d4d4d
+		font-size: 14px
+		font-weight: 400
+		line-height: 24px
+		text-align: center
+
+	&--inverse
+		h2
+			color: #fff
+
+		p
+			color: #fff
+
+.header
+	background-image: url(../img/header-bg.jpg)
+	background-repeat: no-repeat
+	background-size: cover
+	background-position: center
+	position: relative
+	padding-top: 200px
+	padding-bottom: 160px
+
+	&__block
+		text-transform: uppercase
+		line-height: 17px
+		font-size: 14px
+		font-family: $logo
+		font-weight: 800
+		a
+			color: #ff9f5c
+
+		span
+			display: inline-block
+
+		img
+			float: left
+			height: 45px
+			width: 45px
+			margin-right: 10px
+			margin-top: 3px
+
+	&__top
+		padding-top: 20px
+		padding-bottom: 20px
+		width: 100%
+		position: fixed
+		top: 0
+		z-index: 1111
+		transition: all .3s
+		border-bottom: 1px solid rgba(#ebebeb, .15)
+
+		&-active
+			background-color: rgba(0, 0, 0, .9)
+
+		&-btn
+			background-color: transparent
+			padding: 10px 20px
+			border-radius: 15px
+			border: 1px solid #f5584b
+			font-size: 10px
+			font-weight: 400
+			text-transform: uppercase
+			letter-spacing: 1px
+			line-height: 1
+			color: #f5584b
+			text-shadow: 0 1px 2px rgba(0, 0, 0, 0.25)
+			transition: all .3s
+
+			&:hover
+				background: linear-gradient(to right, #f5574b 0%, #ffa05c 100%)
+				outline: none
+				color: #fff
+				cursor: pointer
+				text-decoration: none
+
+			&:focus
+				background: linear-gradient(to right, #f5574b 100%, #ffa05c 100%)
+				outline: none
+				color: #fff
+				cursor: pointer
+				text-decoration: none
+
+	&__top-block
+		display: flex
+		flex-direction: row
+		justify-content: space-between
+		align-items: center
+		position: relative
+
+	&__list
+		list-style-type: none
+		display: flex
+		flex-direction: row
+		justify-content: space-between
+		margin: 0 0 0 70px
+		padding: 0
+
+		ul
+			margin: 0
+			padding: 0
+
+		a
+			display: block
+			margin-right: 55px
+			font-size: 12px
+			text-transform: uppercase
+			color: #fefefe
+			letter-spacing: 1.2px
+			position: relative
+			&::before
+				content: ''
+				width: 0
+				transform: scale(0)
+				transition: all .3s
+
+			&:hover
+				color: $accent
+				text-decoration: none
+				&::before
+					position: absolute
+					bottom: 0
+					width: 100%
+					height: 1px
+					background-color: $accent
+					transform: scale(1)
+
+			&:focus
+				color: $accent
+				text-decoration: none
+				&::before
+					position: absolute
+					bottom: 0
+					width: 100%
+					height: 1px
+					background-color: $accent
+
+			&:last-child
+				padding-right: 0
+
+	.hamburger
+		display: none
+		position: absolute
+		transition: all .25s linear
+		right: 15px
+		padding: 0
+		&:focus
+			outline: none
+
+	.is-active
+		position: fixed
+		z-index: 1001
+
+	.hamburger-box
+		width: 32px
+		right: 0
+
+	.hamburger-inner, .hamburger-inner:after, .hamburger-inner:before
+		width: 32px
+		height: 3px
+		right: 0
+
+	&__center-block
+		color: #ffffff
+		font-size: 14px
+		font-weight: 400
+		line-height: 26px
+		text-align: center
+		p
+			margin-bottom: 60px
+
+	&__title
+		color: #fff
+		font-size: 48px
+		font-weight: 400
+		line-height: 60px
+		margin-bottom: 35px
+		text-align: center
+		text-shadow: 0 2px 1px rgba(0, 0, 0, 0.3)
+
+	&__nav-call
+		display: none
+
+.table
+	position: relative
+
+	h2
+		color: #212121
+		font-size: 32px
+		font-weight: 400
+		line-height: 28px
+		text-align: center
+ 
+	p
+		color: #212121
+		font-size: 14px
+		font-weight: 400
+		line-height: 24px
+		text-align: center
+		margin-bottom: 35px
+
+	&__container
+		box-shadow: 0 20px 30px rgba(0, 0, 0, 0.06)
+		border-radius: 5px
+		background-color: #fcfcfc
+		margin-top: -45px
+		padding-top: 30px
+		text-align: center
+		position: relative
+
+		&::before
+			content: ''
+			position: absolute
+			top: -50px
+			left: 50%
+			transform: translate(-50%, 0)
+			border-radius: 5px
+			background-color: #f9f9f9
+			opacity: .15
+			width: 90%
+			height: 55px
+
+		&::after
+			content: ''
+			position: absolute
+			top: -40px
+			left: 50%
+			transform: translate(-50%, 0)
+			border-radius: 5px
+			background-color: #f9f9f9
+			opacity: .25
+			width: 94%
+			height: 45px
+
+	&__box
+		&::before
+			content: ''
+			position: absolute
+			top: -25px
+			left: 50%
+			transform: translate(-50%, 0)
+			border-radius: 5px
+			background-color: #f9f9f9
+			opacity: .5
+			width: 97%
+			height: 30px
+
+		span
+			font-weight: 700
+			text-transform: uppercase
+			font-size: 14px
+		h2
+			margin-bottom: 25px
+	&__block
+		img
+			width: 100%
+
+.partners
+	padding-top: 75px
+	padding-bottom: 97px
+	overflow: hidden
+
+	p
+		margin-bottom: 30px
+
+	&__btn
+		margin-top: 45px
+
+	&__container
+		display: flex
+		flex-direction: row
+		justify-content: space-between
+
+	&__block
+		display: block
+		border: 1px solid #f7f7f7
+		background-color: #ffffff
+		width: 23%
+		padding-top: 20px
+		padding-bottom: 20px
+		display: flex
+		justify-content: center
+		align-items: center
+
+		&:hover
+			box-shadow: 0 8px 12px rgba(0, 0, 0, 0.05)
+
+.conditions
+	background-image: url(../img/conditions-bg.jpg)
+	background-repeat: no-repeat
+	background-size: cover
+	background-position: center
+	padding-top: 100px
+	padding-bottom: 130px
+	position: relative
+
+	h2
+		text-align: left
+		&::after
+			margin-left: 0
+
+	p
+		text-align: left
+		margin-bottom: 50px
+
+	&__img
+		position: absolute
+		right: -50px
+		top: -130px
+
+	&__box
+		border: 7px solid rgba(#ff9f5c, .35)
+		border-left: none
+		padding: 25px 13px 25px 152px
+		width: 85%
+		position: relative
+		right: 0
+		left: 15%
+
+		&::before
+			content: ''
+			position: absolute
+			top: 0px
+			left: 0
+			width: 7px
+			height: 17px
+			background-color: rgba(#ff9f5c, .35)
+
+		&::after
+			content: ''
+			position: absolute
+			bottom: 0px
+			left: 0
+			width: 7px
+			height: 17px
+			background-color: rgba(#ff9f5c, .35)
+
+		p
+			color: #212121
+			font-size: 12px
+			font-weight: 600
+			line-height: 21px
+			margin-bottom: 0
+
+		span
+			color: #f5584b
+			font-size: 36px
+			font-weight: 400
+			line-height: 28px
+			float: left
+			margin-left: -240px
+			top: 30px
+
+.rates
+	background-image: url(../img/rates-bg.jpg)
+	background-repeat: no-repeat
+	background-size: cover
+	background-position: center
+	padding-top: 75px
+	padding-bottom: 60px
+
+	p
+		font-size: 16px
+		line-height: 24px
+		margin-bottom: 35px
+
+.party
+	padding-top: 95px
+	padding-bottom: 85px
+	position: relative
+	overflow: hidden
+
+	h2
+		margin-bottom: 40px
+		line-height: 42px
+		&::after
+			display: none
+
+	h3
+		font-size: 16px
+		font-weight: 600
+		margin-bottom: 10px
+
+	p
+		color: #262a2d
+		font-size: 14px
+		font-weight: 400
+		line-height: 21px
+
+	&__container
+		display: flex
+		justify-content: space-between
+		flex-direction: row
+		flex-wrap: wrap
+
+	&__block
+		position: relative
+		width: 34%
+		padding-left: 85px
+		margin-right: 10%
+		margin-left: 6%
+		margin-bottom: 55px
+
+		p
+			text-align: left
+
+		span
+			position: absolute
+			right: -10%
+			top: -25px
+			opacity: 0.06
+			color: #262a2d
+			font-size: 64px
+			font-weight: 400
+			line-height: 55px
+	
+
+	img
+		width: 67px
+		height: 67px
+		position: absolute
+		left: 0
+		top: 0
+
+.application
+	padding-top: 110px
+	padding-bottom: 105px
+	background-image: url(../img/application-bg.jpg)
+	background-repeat: no-repeat
+	background-size: cover
+	background-position: center
+	position: relative
+
+	&__content
+		h2
+			text-align: left
+			&::after
+				margin-left: 0
+
+		p
+			text-align: left
+
+.price
+	padding-top: 155px
+	padding-bottom: 80px
+	position: relative
+
+	p
+		margin-bottom: 30px
+
+	h4
+		color: #ffffff
+		font-size: 36px
+		font-weight: 700
+		line-height: 28px
+		text-align: center
+
+	&__box
+		border: 7px solid rgba(#ff9f5c, .35)
+		border-left: none
+		width: 60%
+		margin: 0 auto
+		padding: 15px 0 30px 55px
+		position: relative
+		margin-bottom: 40px
+
+		&::before
+			content: ''
+			position: absolute
+			top: 0px
+			left: 0
+			width: 7px
+			height: 17px
+			background-color: rgba(#ff9f5c, .35)
+
+		&::after
+			content: ''
+			position: absolute
+			bottom: 0px
+			left: 0
+			width: 7px
+			height: 17px
+			background-color: rgba(#ff9f5c, .35)
+
+		img
+			width: 42px
+			height: 44px
+			float: left
+			margin-top: 10px
+			margin-left: -70px
+
+		h3
+			color: #212121
+			font-size: 18px
+			font-weight: 400
+			line-height: 24px
+			text-transform: uppercase
+			display: inline-block
+			margin-right: 30px
+
+		p
+			color: #808080
+			font-size: 14px
+			font-weight: 400
+			line-height: 24px
+			text-align: left
+			display: inline-block
+			border-left: 1px solid #f5584b
+			padding-left: 14px
+			margin-bottom: 0
+
+	&__container
+		display: flex
+		justify-content: space-between
+		flex-direction: row
+		position: relative
+
+	&__block
+		box-shadow: 0 20px 30px rgba(0, 0, 0, 0.06)
+		border-radius: 5px
+		background-color: #ffffff
+		width: 32%
+		display: flex
+		flex-direction: column
+		&:last-child
+			align-self: flex-start
+
+		&_active
+			box-shadow: 0 20px 30px rgba(245, 88, 75, 0.2)
+
+		&_top
+			border-radius: 5px 5px 0 0
+			background-color: #212121
+			background-image: linear-gradient(to right, #151515 0%, #2a2a37 100%)
+			padding: 28px 0
+
+		&_top-active
+			box-shadow: 0 15px 26px rgba(245, 88, 75, 0.17)
+			border-radius: 5px 5px 0 0
+			background-color: #f5584b
+			background-image: linear-gradient(to right, #f5574b 0%, #ffa05c 100%)
+
+		&_list
+			list-style-type: none
+			margin: 0
+			padding: 30px 50px 30px 30px
+			color: #4d4d4d
+			font-size: 14px
+			font-weight: 400
+			line-height: 24px
+			border-bottom: 1px solid #d9d9d9
+			height: 100%
+			li
+				padding-left: 20px
+				position: relative
+				margin-bottom: 15px
+				&::before
+					content: "+"
+					position: absolute
+					left: 0
+					top: 0
+					color: #f5584b
+					font-size: 20px
+
+				&:last-child
+					font-weight: 700
+					margin-bottom: 0
+
+		&_bottom
+			padding: 30px 0
+			margin-top: auto
+
+	&__manager
+		position: absolute
+		right: 140px
+		bottom: 60px
+		color: #b3b3b3
+		font-size: 12px
+		font-weight: 400
+
+		img
+			width: 24px
+			height: 25px
+			float: left
+
+		span
+			display: block
+			padding-left: 30px
+
+.calculator
+	padding-top: 80px
+	padding-bottom: 130px
+	background-image: url(../img/calculator-bg.jpg)
+	background-repeat: no-repeat
+	background-size: cover
+	background-position: center
+	position: relative
+
+	&__container
+		border-bottom: 1px solid rgba(#445d80, .15)
+
+		p
+			margin-bottom: 45px
+
+	&__block
+		position: relative
+
+	&__block_input
+		border-bottom: 1px solid #6772cf
+		width: 33%
+		display: flex
+		flex-direction: row
+		font-size: 36px
+		color: #6772cf
+		margin: 0 auto
+		span
+			width: 30%
+			text-align: center
+
+	input
+		width: 70%
+		margin: 0 auto
+		display: block
+		background: transparent
+		border: none
+		color: #fff
+		text-align: center
+		margin-bottom: 5px
+
+	label
+		text-align: center
+		color: #243142
+		font-size: 14px
+		font-weight: 400
+		display: flex
+		justify-content: center
+		margin-bottom: 25px
+
+	&__box
+		display: flex
+		flex-direction: row
+		justify-content: space-between
+		width: 55%
+		margin: 0 auto
+		padding-top: 30px
+
+		p
+			color: #6772cf
+
+			span
+				font-size: 30px
+				color: #fff
+
+			&:last-child
+				color: #fff
+				span
+					font-weight: 700
+					color: #f5584b
+
+.footer
+	background-color: #0e131a
+
+	&__container
+		border-bottom: 1px solid rgba(#445d80, .15)
+		padding: 31px 0 40px 0
+
+	&__block
+		flex-wrap: wrap
+
+	&__copy
+		color: #29384d
+		font-size: 12px
+		font-weight: 700
+		text-align: center
+		padding: 30px 0
+
+	&__soc
+		width: 100%
+		display: flex
+		justify-content: center
+		flex-wrap: wrap
+
+		img
+			height: 16px
+			margin-right: 5px
+
+		a
+			display: block
+			font-size: 12px
+			color: #29384d
+			position: relative
+			font-weight: 700
+			margin-right: 30px
+
+			&::before
+				content: ''
+				width: 0
+				transform: scale(0)
+				transition: all .3s
+
+			&:hover
+				color: $accent
+				text-decoration: none
+				&::before
+					position: absolute
+					bottom: -5px
+					width: 100%
+					height: 1px
+					background-color: $accent
+					transform: scale(1)
+
+			&:focus
+				color: $accent
+				text-decoration: none
+				&::before
+					position: absolute
+					bottom: -5px
+					width: 100%
+					height: 1px
+					background-color: $accent
+
+//-------------------------page---------------------------------------
+
+.header__page
+	background-image: none
+	background-color: #0e131a
+	padding-top: 92px
+	padding-bottom: 0
+
+//-------------------------fag---------------------------------------
+
+.main__fag
+	padding-top: 90px
+	padding-bottom: 80px
+
+	h1
+		color: #262a2d
+		font-size: 32px
+		font-weight: 400
+		line-height: 28px
+		text-align: center
+		margin-bottom: 55px
+
+	h2
+		color: #262a2d
+		font-size: 16px
+		font-weight: 600
+		line-height: 30px
+
+	p
+		color: #262a2d
+		font-size: 14px
+		font-weight: 400
+		line-height: 24px
+		margin-top: 25px
+		display: none
+
+	.block
+		border-radius: 3px
+		border: 3px solid #f2f2f2
+		padding: 25px 55px 25px 20px
+		margin-bottom: 30px
+		position: relative
+		transition: all .3s
+
+		&:last-child
+			margin-bottom: 0
+
+		&__header
+			cursor: pointer
+
+	.active
+		border: 3px solid #ffddc6
+
+
+		.button
+			width: 24px
+			height: 24px
+			box-shadow: 0 3px 5px rgba(249, 145, 37, 0.3)
+			background-color: #ff9f5c
+			&::before
+				display: none
+			&::after
+				display: block
+
+	.button
+		width: 24px
+		height: 24px
+		background-color: #f2f2f2
+		border-radius: 50%
+		outline: none
+		border: none
+		position: absolute
+		top: 25px
+		right: 0%
+		transform: translate(-50%, 0%)
+		transition: all .3s
+
+		&::before
+			content: ""
+			position: absolute
+			top: 50%
+			left: 50%
+			width: 25px
+			height: 10px
+			transform: translate(-50%, -50%) rotate(90deg)
+			background-image: url(../img/icon/arrow-black.svg)
+			background-repeat: no-repeat
+			background-position: center
+
+		&::after
+			content: ""
+			position: absolute
+			top: 50%
+			left: 50%
+			width: 25px
+			height: 10px
+			transform: translate(-50%, -50%) rotate(-90deg)
+			background-image: url(../img/icon/arrow-white.svg)
+			background-repeat: no-repeat
+			background-position: center
+			display: none
+
+
+
+//-------------------------about---------------------------------------
+.about
+	.party
+		overflow: inherit
+
+.company
+	padding-top: 60px
+	padding-bottom: 60px
+	position: relative
+
+	&__container
+		padding-bottom: 32px
+
+	h1
+		color: #212121
+		font-size: 32px
+		font-weight: 400
+		line-height: 28px
+		text-align: center
+		margin-bottom: 60px
+
+	h3
+		color: #262a2d
+		font-size: 16px
+		font-weight: 600
+		line-height: 24px
+		margin-top: 15px
+
+		&::after
+			content: ''
+			display: block
+			margin: 25px 0
+			box-shadow: 0 8px 10px rgba(251, 131, 85, 0.15)
+			background-color: #ffff00
+			background: linear-gradient(to right, #f5574b 0%, #ffa05c 100%)
+			width: 70px
+			height: 1px
+
+	p
+		color: #262a2d
+		font-size: 14px
+		font-weight: 400
+		line-height: 24px
+		margin-bottom: 25px
+
+	img
+		width: 100%
+
+	&__box
+		border: 7px solid rgba(#ff9f5c, .35)
+		border-left: none
+		width: 98%
+		margin: 0 auto 0 2%
+		padding: 25px 20px 25px 35px
+		position: relative
+		right: 0
+		display: flex
+		justify-content: space-between
+
+		&::before
+			content: ''
+			position: absolute
+			top: 0px
+			left: 0
+			width: 7px
+			height: 30px
+			background-color: rgba(#ff9f5c, .35)
+
+		&::after
+			content: ''
+			position: absolute
+			bottom: 0px
+			left: 0
+			width: 7px
+			height: 30px
+			background-color: rgba(#ff9f5c, .35)
+
+		img
+			width: 57px
+			height: 57px
+			float: left
+			margin-top: 20px
+			margin-left: -60px
+
+		h4
+			color: #212121
+			font-size: 16px
+			font-weight: 400
+			line-height: 24px
+			text-transform: uppercase
+			display: inline-block
+			margin-left: 15px
+			margin-right: 15px
+
+		p
+			color: #808080
+			font-size: 14px
+			font-weight: 400
+			line-height: 21px
+			text-align: left
+			display: inline-block
+			border-left: 1px solid #f5584b
+			padding-left: 14px
+			margin-bottom: 0
+
+.principles
+	padding-top: 70px
+	padding-bottom: 85px
+	position: relative
+	background-color: #fafafa
+
+	h2
+
+
+
+@import "media" // Always at the end
