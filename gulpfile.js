@@ -1,75 +1,131 @@
-var syntax        = 'sass'; // Syntax: sass or scss;
+// VARIABLES & PATHS
 
-var gulp          = require('gulp'),
-		gutil         = require('gulp-util' ),
-		sass          = require('gulp-sass'),
-		browsersync   = require('browser-sync'),
-		concat        = require('gulp-concat'),
-		uglify        = require('gulp-uglify'),
-		cleancss      = require('gulp-clean-css'),
-		rename        = require('gulp-rename'),
-		autoprefixer  = require('gulp-autoprefixer'),
-		notify        = require("gulp-notify"),
-		rsync         = require('gulp-rsync');
+let preprocessor = 'sass', // Preprocessor (sass, scss, less, styl)
+    fileswatch   = 'html,htm,txt,json,md,woff2', // List of files extensions for watching & hard reload (comma separated)
+    imageswatch  = 'jpg,jpeg,png,webp,svg', // List of images extensions for watching & compression (comma separated)
+    baseDir      = 'app', // Base directory path without «/» at the end
+    online       = true; // If «false» - Browsersync will work offline without internet connection
 
-gulp.task('browser-sync', function() {
-	browsersync({
-		server: {
-			baseDir: 'app'
-		},
+let paths = {
+
+	scripts: {
+		src: [
+			'app/libs/jquery/dist/jquery.min.js',
+			'app/libs/jquery.validate.js',
+			'app/libs/jquery.mask.min.js',
+			'app/libs/jquery.matchHeight-min.js',
+			'app/libs/slick.min.js',
+			'app/libs/fancybox/jquery.fancybox.js',
+			'app/libs/jquery.popupoverlay.js',
+			'app/js/common.js', // Always at the end
+			baseDir + '/js/common.js' // app.js. Always at the end
+		],
+		dest: baseDir + '/js',
+	},
+
+	styles: {
+		src:  baseDir + '/' + preprocessor + '/main.*',
+		dest: baseDir + '/css',
+	},
+
+	images: {
+		src:  baseDir + '/img/src/**/*',
+		dest: baseDir + '/img/dest',
+	},
+
+	deploy: {
+		hostname:    'username@yousite.com', // Deploy hostname
+		destination: 'yousite/public_html/', // Deploy destination
+		include:     [/* '*.htaccess' */], // Included files to deploy
+		exclude:     [ '**/Thumbs.db', '**/*.DS_Store' ], // Excluded files from deploy
+	},
+
+	cssOutputName: 'app.min.css',
+	jsOutputName:  'app.min.js',
+
+}
+
+// LOGIC
+
+const { src, dest, parallel, series, watch } = require('gulp');
+const sass = require('gulp-sass')(require('sass'));
+const scss         = require('gulp-sass');
+const less         = require('gulp-less');
+const styl         = require('gulp-stylus');
+const cleancss     = require('gulp-clean-css');
+const concat       = require('gulp-concat');
+const browserSync  = require('browser-sync').create();
+const uglify       = require('gulp-uglify-es').default;
+const autoprefixer = require('gulp-autoprefixer');
+const imagemin     = require('gulp-imagemin');
+const newer        = require('gulp-newer');
+const rsync        = require('gulp-rsync');
+const del          = require('del');
+
+function browsersync() {
+	browserSync.init({
+		server: { baseDir: baseDir + '/' },
 		notify: false,
-		// open: false,
-		// tunnel: true,
-		// tunnel: "projectname", //Demonstration page: http://projectname.localtunnel.me
+		online: online
 	})
-});
+}
 
-gulp.task('styles', function() {
-	return gulp.src('app/'+syntax+'/**/*.'+syntax+'')
-	.pipe(sass({ outputStyle: 'expand' }).on("error", notify.onError()))
-	.pipe(rename({ suffix: '.min', prefix : '' }))
-	.pipe(autoprefixer(['last 15 versions']))
-	.pipe(cleancss( {level: { 1: { specialComments: 0 } } })) // Opt., comment out when debugging
-	.pipe(gulp.dest('app/css'))
-	.pipe(browsersync.reload( {stream: true} ))
-});
+function scripts() {
+	return src(paths.scripts.src)
+	.pipe(concat(paths.jsOutputName))
+	// .pipe(uglify())
+	.pipe(dest(paths.scripts.dest))
+	.pipe(browserSync.stream())
+}
 
-gulp.task('js', function() {
-	return gulp.src([
-		'app/libs/jquery/dist/jquery.min.js',
-		'app/libs/jquery.validate.js',
-		'app/libs/jquery.mask.min.js',
-		'app/libs/jquery.matchHeight-min.js',
-		'app/libs/slick.min.js',
-		'app/libs/fancybox/jquery.fancybox.js',
-		'app/libs/jquery.popupoverlay.js',
-		'app/js/common.js', // Always at the end
-		])
-	.pipe(concat('scripts.min.js'))
-	// .pipe(uglify()) // Mifify js (opt.)
-	.pipe(gulp.dest('app/js'))
-	.pipe(browsersync.reload({ stream: true }))
-});
+function styles() {
+	return src(paths.styles.src)
+	.pipe(eval(preprocessor)())
+	.pipe(concat(paths.cssOutputName))
+	.pipe(autoprefixer({ overrideBrowserslist: ['last 10 versions'], grid: true }))
+	.pipe(cleancss( {level: { 1: { specialComments: 0 } },/* format: 'beautify' */ }))
+	.pipe(dest(paths.styles.dest))
+	.pipe(browserSync.stream())
+}
 
-gulp.task('rsync', function() {
-	return gulp.src('app/**')
+function images() {
+	return src(paths.images.src)
+	.pipe(newer(paths.images.dest))
+	.pipe(imagemin())
+	.pipe(dest(paths.images.dest))
+}
+
+function cleanimg() {
+	return del('' + paths.images.dest + '/**/*', { force: true })
+}
+
+function deploy() {
+	return src(baseDir + '/')
 	.pipe(rsync({
-		root: 'app/',
-		hostname: 'username@yousite.com',
-		destination: 'yousite/public_html/',
-		// include: ['*.htaccess'], // Includes files to deploy
-		exclude: ['**/Thumbs.db', '**/*.DS_Store'], // Excludes files from deploy
+		root: baseDir + '/',
+		hostname: paths.deploy.hostname,
+		destination: paths.deploy.destination,
+		include: paths.deploy.include,
+		exclude: paths.deploy.exclude,
 		recursive: true,
 		archive: true,
 		silent: false,
 		compress: true
 	}))
-});
+}
 
-gulp.task('watch', ['styles', 'js', 'browser-sync'], function() {
-	gulp.watch('app/'+syntax+'/**/*.'+syntax+'', ['styles']);
-	gulp.watch(['libs/**/*.js', 'app/js/common.js'], ['js']);
-	gulp.watch('app/*.html', browsersync.reload)
-});
+function startwatch() {
+	watch(baseDir  + '/' + preprocessor + '/**/*', {usePolling: true}, styles);
+	watch(baseDir  + '/img/src/**/*.{' + imageswatch + '}', {usePolling: true}, images);
+	watch(baseDir  + '/**/*.{' + fileswatch + '}', {usePolling: true}).on('change', browserSync.reload);
+	watch([baseDir + '/js/**/*.js', '!' + paths.scripts.dest + '/*.min.js'], {usePolling: true}, scripts);
+}
 
-gulp.task('default', ['watch']);
+exports.browsersync = browsersync;
+exports.assets      = series(cleanimg, styles, scripts, images);
+exports.styles      = styles;
+exports.scripts     = scripts;
+exports.images      = images;
+exports.cleanimg    = cleanimg;
+exports.deploy      = deploy;
+exports.default     = parallel(images, styles, scripts, browsersync, startwatch);

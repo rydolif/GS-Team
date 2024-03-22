@@ -420,13 +420,8 @@ body input:required:valid, body textarea:required:valid
 			color: #fff
 
 .header
-	background-image: url(../img/header-bg.jpg)
-	background-repeat: no-repeat
-	background-size: cover
-	background-position: center
 	position: relative
-	padding-top: 200px
-	padding-bottom: 160px
+
 
 	&__block
 		text-transform: uppercase
@@ -587,6 +582,19 @@ body input:required:valid, body textarea:required:valid
 
 	&__nav-call
 		display: none
+
+.hero
+	background-image: url(../img/header-bg.jpg)
+	background-repeat: no-repeat
+	background-size: cover
+	background-position: center
+	padding-top: 200px
+	padding-bottom: 160px
+	text-align: center
+
+	p
+		color: #fff
+		margin-bottom: 25px
 
 .table
 	position: relative
@@ -1340,9 +1348,5 @@ body input:required:valid, body textarea:required:valid
 	padding-bottom: 85px
 	position: relative
 	background-color: #fafafa
-
-	h2
-
-
 
 @import "media" // Always at the end

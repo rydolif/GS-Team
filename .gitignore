@@ -1,9 +1,6 @@
 /node_modules/
-/dist/
-/psd/
+/maket/
 /.git/
-/app/css/
-/**/_backstage
-/**/package-lock.json
 /**/Thumbs.db
 /**/*.DS_Store
+/**/package-lock.json
